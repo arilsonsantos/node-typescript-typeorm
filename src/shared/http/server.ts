@@ -1,8 +1,9 @@
 export class AppServer {
     private app: string
 
+
     constructor(info: string) {
-        this.app = info ?? 'Olá dev'
+        this.app =info ?? "Olá dev"
         console.log('Teste.')
     }
 }
