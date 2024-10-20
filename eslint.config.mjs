@@ -42,5 +42,7 @@ export default [
       node: true,
       jest: true,
     },
+    ignores: ["dist/**/*", "node_modules"]
   },
+
 ];
