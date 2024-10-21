@@ -22,4 +22,8 @@ export class RolesRepository {
 
         return role
     }
+
+    findAll(): Role[] {
+       return this.roles
+    }
 }

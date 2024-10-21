@@ -17,8 +17,9 @@ rolesRouter.post("/", (reqquest, response) => {
 
 })
 
-rolesRouter.get("/", (req, res) => {
-    return res.json({message:"Teste"})
+rolesRouter.get("/", (request, response) => {
+    const roles = rolesRepository.findAll()
+    return response.json(roles)
 })
 
 export { rolesRouter }
