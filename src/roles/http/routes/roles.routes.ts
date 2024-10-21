@@ -1,20 +1,17 @@
-import { Router } from "express"
-import { v4 as uuidV4 } from 'uuid'
 import {
-    Role
-} from "@roles/entities/Roles";
+    Router
+} from "express"
+import {
+    RolesRepository
+} from "@roles/repositories/RolesRepository";
 
 const rolesRouter = Router()
-
-const roles: Role[] = []
+const rolesRepository = new RolesRepository()
 
 rolesRouter.post("/", (reqquest, response) => {
-    const { name } = reqquest.body
+    const  { name }  = reqquest.body
 
-    const role = new Role()
-    role.name = name
-
-    roles.push(role)
+    const role = rolesRepository.create( { name })
 
     return response.status(201).json(role)
 
