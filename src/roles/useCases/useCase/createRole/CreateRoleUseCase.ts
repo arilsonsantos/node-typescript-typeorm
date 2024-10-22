@@ -16,13 +16,13 @@ export class CreateRoleUseCase {
 
     constructor(private rolesRepository : RolesRepository) {}
 
-    execute(roleDto: CreateRoleDto): Role{
-        const roleExists = this.rolesRepository.findByName(roleDto.name)
+    async execute({ name }: CreateRoleDto): Promise<Role>{
+        const roleExists = await this.rolesRepository.findByName(name)
 
         if (roleExists){
             throw new AppError('Role already exists')
         }
 
-        return this.rolesRepository.create( roleDto )
+        return this.rolesRepository.create( { name } )
     }
 }

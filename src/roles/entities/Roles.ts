@@ -14,13 +14,12 @@ export class Role {
     @Column()
     name: string
 
-    @CreateDateColumn()
+    @CreateDateColumn({ name: 'created_at' })
     createdAd: Date
 
     constructor() {
         if (!this.id){
             this.id = uudV4()
         }
-        this.createdAd = new Date()
     }
 }

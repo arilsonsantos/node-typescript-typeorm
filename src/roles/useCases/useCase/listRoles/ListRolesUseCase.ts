@@ -1,15 +1,19 @@
 import {
-    RolesRepository
-} from "@roles/repositories/RolesRepository";
-import {
-    Role
-} from "@roles/entities/Roles";
+    RolesPaginateProperties,
+    RolesRepository,
+} from "@roles/repositories/RolesRepository"
 
+type ListRolesUseCaseParams = {
+    page: number
+    limit: number
+}
 export class ListRolesUseCase {
 
     constructor(private rolesRepository: RolesRepository) {}
 
-    execute(): Role[] {
-        return this.rolesRepository.findAll()
+    async execute({ page, limit }: ListRolesUseCaseParams): Promise<RolesPaginateProperties> {
+        const skip = (page - 1) * limit
+
+        return await this.rolesRepository.findAll( { page, skip, take:limit } )
     }
 }
