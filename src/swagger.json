@@ -1,0 +1,13 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API Node/Typescript",
+    "description": "API Node with all specifications",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Arilson Santos",
+      "email": "arilson@email.com"
+    }
+  },
+  "paths": {}
+}
