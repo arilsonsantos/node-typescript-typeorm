@@ -9,5 +9,79 @@
       "email": "arilson@email.com"
     }
   },
-  "paths": {}
+  "paths": {
+    "/roles": {
+      "post": {
+        "tags": ["Role"],
+        "summary": "Create a role",
+        "description": "Create a new role",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Role created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Admin"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2024-01-01T12:00:00Z"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "summary": "Example Role",
+                    "value": {
+                      "id": "abc-123",
+                      "name": "Admin",
+                      "createdAt": "2024-01-01T12:00:00Z",
+                      "updatedAt": "2024-01-01T12:00:00Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Role already exists"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Role"],
+        "summary": "List roles",
+        "description": "Return all roles paginated",
+        "responses": {
+          "200": {
+            "description": "Success"
+
+          }
+        }
+      }
+    }
+  }
 }
