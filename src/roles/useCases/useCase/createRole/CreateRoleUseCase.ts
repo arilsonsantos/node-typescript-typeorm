@@ -8,7 +8,7 @@ import {
     AppError
 } from "@shared/errors/AppError";
 
-type CreateRoleDto = {
+export type CreateRoleDto = {
     name: string
 }
 
@@ -18,9 +18,11 @@ export class CreateRoleUseCase {
 
     execute(roleDto: CreateRoleDto): Role{
         const roleExists = this.rolesRepository.findByName(roleDto.name)
+
         if (roleExists){
             throw new AppError('Role already exists')
         }
+
         return this.rolesRepository.create( roleDto )
     }
 }
