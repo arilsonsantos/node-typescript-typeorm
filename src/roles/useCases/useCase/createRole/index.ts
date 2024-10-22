@@ -9,7 +9,7 @@ import {
     CreateRoleUseCase
 } from "@roles/useCases/useCase/createRole/CreateRoleUseCase";
 
-const rolesRepository = new RolesRepository()
+const rolesRepository = RolesRepository.getInstance()
 const createRoleUseCase = new CreateRoleUseCase(rolesRepository)
 
 export const createRoleController = new CreateRoleController(createRoleUseCase)
