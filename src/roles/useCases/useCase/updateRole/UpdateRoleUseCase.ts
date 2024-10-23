@@ -1,21 +1,29 @@
 import {
-    RolesRepository
-} from "@roles/repositories/RolesRepository";
+    RolesRepository,
+} from "@roles/repositories/RolesRepository"
 import {
-    Role
-} from "@roles/entities/Roles";
+    Role,
+} from "@roles/entities/Roles"
 import {
-    AppError
-} from "@shared/errors/AppError";
+    AppError,
+} from "@shared/errors/AppError"
 import {
-    UpdateRoleDto
+    UpdateRoleDto,
 } from "@roles/useCases/useCase/updateRole/UpdateRoleController"
+import {
+    inject,
+    injectable,
+} from "tsyringe"
+import {
+    IRolesRepository,
+} from "@roles/repositories/IRolesRepository"
 
 
-
+@injectable()
 export class UpdateRoleUseCase {
 
-    constructor(private rolesRepository : RolesRepository) {}
+    constructor(@inject('RolesRepository')
+                private rolesRepository : IRolesRepository) {}
 
     async execute(updateRoleDto: UpdateRoleDto): Promise<Role>{
         const role = await this.rolesRepository.findById(updateRoleDto.id)

@@ -5,6 +5,9 @@ import {
 import {
     UpdateRoleUseCase,
 } from "@roles/useCases/useCase/updateRole/UpdateRoleUseCase"
+import {
+    container,
+} from "tsyringe"
 
 export type UpdateRoleDto = {
     id: string,
@@ -13,9 +16,8 @@ export type UpdateRoleDto = {
 
 export class UpdateRoleController {
 
-    constructor(private updateRoleUserCase: UpdateRoleUseCase) {}
-
     async handle(request: Request, response: Response): Promise<Response> {
+        const updateRoleUserCase = container.resolve(UpdateRoleUseCase)
         const id = request.params.id
         const roleDto: UpdateRoleDto = request.body
 
@@ -24,8 +26,9 @@ export class UpdateRoleController {
             name: roleDto.name
         }
 
-        const role = await this.updateRoleUserCase.execute(roleToUpdate)
+        const role = await updateRoleUserCase.execute(roleToUpdate)
 
         return response.json(role)
     }
+
 }

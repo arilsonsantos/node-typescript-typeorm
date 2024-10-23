@@ -7,10 +7,16 @@ import {
 import {
     AppError
 } from "@shared/errors/AppError";
+import {
+    inject,
+    injectable,
+} from "tsyringe"
 
+@injectable()
 export class ShowRoleUseCase {
 
-    constructor(private rolesRepository : RolesRepository) {}
+    constructor(@inject('RolesRepository')
+                private rolesRepository : RolesRepository) {}
 
     async execute(id: string): Promise<Role>{
         const role = await this.rolesRepository.findById(id)

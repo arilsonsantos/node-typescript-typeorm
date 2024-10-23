@@ -10,6 +10,7 @@ import * as console
     from "node:console";
 import swaggerFile from '../../swagger.json'
 import swaggerUi from 'swagger-ui-express'
+import '@roles/container'
 
 const app = express()
 app.use(cors())

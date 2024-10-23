@@ -4,11 +4,17 @@ import {
 import {
     AppError,
 } from "@shared/errors/AppError"
+import {
+    inject,
+    injectable,
+} from "tsyringe"
 
 
+@injectable()
 export class DeleteRoleUseCase {
 
-    constructor(private rolesRepository : RolesRepository) {}
+    constructor(@inject('RolesRepository')
+                private rolesRepository : RolesRepository) {}
 
     async execute(id: string): Promise<void>{
         const role = await this.rolesRepository.findById(id)
