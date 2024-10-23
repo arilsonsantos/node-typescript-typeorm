@@ -49,7 +49,7 @@ export class RolesRepository {
         return this.repository.save(role)
     }
 
-    async save(role: Role): Promise<Role> {
+    async update(role: Role): Promise<Role> {
         return await this.repository.save(role)
     }
 

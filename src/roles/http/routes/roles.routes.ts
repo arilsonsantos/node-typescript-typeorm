@@ -10,6 +10,9 @@ import {
 import {
     showRoleController
 } from "@roles/useCases/useCase/showRole"
+import {
+    updateRoleController
+} from "@roles/useCases/useCase/updateRole"
 
 const rolesRouter = Router()
 
@@ -23,6 +26,10 @@ rolesRouter.get("/", (request, response) => {
 
 rolesRouter.get("/:id", (request, response) => {
     return showRoleController.handle(request, response)
+})
+
+rolesRouter.put("/:id", (request, response) => {
+    return updateRoleController.handle(request, response)
 })
 
 export { rolesRouter }
