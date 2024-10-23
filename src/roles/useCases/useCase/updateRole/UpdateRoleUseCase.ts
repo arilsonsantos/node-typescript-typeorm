@@ -26,7 +26,7 @@ export class UpdateRoleUseCase {
 
         const roleWithSameName = await this.rolesRepository.findByName(updateRoleDto.name)
 
-        if (roleWithSameName){
+        if (roleWithSameName && role.name !== roleWithSameName.name){
             throw new AppError('Role name not informed or already in use')
         }
 
