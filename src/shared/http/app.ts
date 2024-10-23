@@ -3,6 +3,7 @@ import express, {
 } from "express";
 import 'express-async-errors'
 import cors from 'cors'
+import { errors } from 'celebrate'
 import { routes } from "./routes";
 import { AppError } from "@shared/errors/AppError";
 import * as console
@@ -15,6 +16,7 @@ app.use(cors())
 app.use(express.json())
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.use(routes)
+app.use(errors())
 
 app.use((error: Error, request: Request, response: Response, next: NextFunction) => {
     if (error instanceof AppError) {
