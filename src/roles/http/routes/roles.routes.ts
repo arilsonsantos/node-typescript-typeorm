@@ -7,6 +7,9 @@ import {
 import {
     createRoleController
 } from "@roles/useCases/useCase/createRole";
+import {
+    showRoleController
+} from "@roles/useCases/useCase/showRole"
 
 const rolesRouter = Router()
 
@@ -16,6 +19,10 @@ rolesRouter.post("/", (request, response) => {
 
 rolesRouter.get("/", (request, response) => {
    return listRolesController.handle(request, response)
+})
+
+rolesRouter.get("/:id", (request, response) => {
+    return showRoleController.handle(request, response)
 })
 
 export { rolesRouter }
