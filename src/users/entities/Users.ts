@@ -3,8 +3,12 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    ManyToOne,
     PrimaryColumn,
 } from "typeorm"
+import {
+    Role
+} from "@roles/entities/Roles"
 
 @Entity('users')
 export class User {
@@ -31,6 +35,11 @@ export class User {
 
     @Column({ name:'role_id' })
     roleId: string
+
+    @ManyToOne(() => Role, role => role.id, {
+        cascade : true
+    })
+    role: Role
 
     constructor() {
         if (!this.id){

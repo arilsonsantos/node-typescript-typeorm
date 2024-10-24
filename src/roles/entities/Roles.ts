@@ -1,4 +1,6 @@
-import { v4 as uudV4 } from 'uuid'
+import {
+    v4 as uudV4,
+} from "uuid"
 import {
     Column,
     CreateDateColumn,
