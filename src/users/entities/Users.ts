@@ -3,6 +3,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
     ManyToOne,
     PrimaryColumn,
 } from "typeorm"
@@ -33,12 +34,11 @@ export class User {
     @CreateDateColumn({ name: 'created_at' })
     createdAt: Date
 
-    @Column({ name:'role_id' })
-    roleId: string
 
-    @ManyToOne(() => Role, role => role.id, {
+    @ManyToOne(() => Role,  {
         cascade : true
     })
+    @JoinColumn({ name: 'role_id' })
     role: Role
 
     constructor() {

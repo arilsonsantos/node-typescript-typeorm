@@ -1,13 +1,9 @@
 import {
-    Role
-} from "@roles/entities/Roles"
-import {
-    User
+    User,
 } from "../entities/Users"
 import {
-    CreateRoleDto,
-    RolesPaginateProperties,
-} from "@roles/repositories/IRolesRepository"
+    Role
+} from "@roles/entities/Roles"
 
 export type PaginateParams = {
     page: number
@@ -31,10 +27,11 @@ export type CreateUserDto = {
 }
 
 export interface IUsersRepository {
-    create(createUserDto: CreateUserDto): Promise<Role>
+    create(createUserDto: CreateUserDto): Promise<User>
     update(user: User): Promise<User>
     delete(user: User): Promise<void>
     findAll(params: PaginateParams): Promise<UsersPaginateProperties>
     findById(id: string): Promise<User | null>
     findByName(name: string): Promise<User | null>
+    findByEmail(email: string): Promise<User | null>
 }

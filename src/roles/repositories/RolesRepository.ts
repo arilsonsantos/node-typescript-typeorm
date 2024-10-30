@@ -17,8 +17,7 @@ export class RolesRepository implements IRolesRepository{
     }
 
     async create(createRoleDto: CreateRoleDto): Promise<Role> {
-        const name = createRoleDto.name
-        const role = this.repository.create( { name })
+        const role = this.repository.create( createRoleDto)
 
         return this.repository.save(role)
     }
